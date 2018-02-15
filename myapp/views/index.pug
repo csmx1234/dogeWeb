@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  script(src="https://unpkg.com/vue")
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.js")
+
+  div#app
+    h1 
+      messages(v-for="message in messages" v-bind:now="now")
+    p {{ kappa }}
+    button(v-on:click="changeMsg") click me
+  p Welcome to #{title}'s Website
+
+  script(src='/javascripts/helloworld.js')
