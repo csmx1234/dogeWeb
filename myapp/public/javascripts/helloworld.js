@@ -1,54 +1,67 @@
 function hello() {
-	alert("\u8001\u5A46\u5A46\u662F\u5446B");
+  alert("\u8001\u5A46\u5A46\u662F\u5446B");
 }
 
-new Vue({
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+var data = {
+  messages: [{
+    created_at: Date.now()
+  }],
+  displaying: true,
+  now: Date.now(),
+  seen: true,
+  hideBtnName: "hide it",
+  kappa: "笨蛋",
+  title: "Jack",
+  showing: true
+};
+
+async function start(){
+  while (true) {
+    data.showing = !data.showing;
+    await sleep(1000);
+  }
+};
+
+start();
+
+var vm = new Vue({
   el: '#app',
-  data: {
-    messages: [{
-      displaying: true,
-      created_at: Date.now()
-    }],
-    now: Date.now(),
-    kappa: '笨蛋'
-  },
+  data: data,
   mounted: function() {
     var self = this;
-    console.log(this);
     setInterval(function() {
       self.$data.now = Date.now()
-      self.$data.messages[0].displaying = !self.$data.messages[0].displaying
+      self.$data.displaying = !self.$data.displaying
     }, 1000)
   },
   methods: {
     changeMsg: function() {
       this.kappa = (this.kappa == '笨蛋' ? 'lalala' : '笨蛋')
+    },
+	  hideMsg: function() {
+      this.seen = !this.seen
+      this.hideBtnName = this.seen ? "hide it" : "show it"
     }
   },
   components: {
     messages: {
-    	data: function () {
-    		return {
-    			messages: [{
-      			displaying: true,
-      			created_at: Date.now()}],
-    			now: Date.now(),
-    			kappa: '笨蛋'
-    		}
-  		},
+      data: function() {
+        return {
+          displaying: true
+        }
+      },
       props: ['now'],
       template: '<p>{{ timestamp }}</p>',
       computed: {
         timestamp: function() {
           this.now
-          var display = "外接球"
-		  var displaying = this.$data.messages[0].displaying
-		  if ( displaying ) {
-			  display = "外接球"
-		  } else {
-			  display = "内接球"
-		  }
-		  this.$data.messages[0].displaying = !displaying
+          var displaying = this.$data.displaying
+          var display = displaying ? "Siming" : "Jack"
+          this.$data.displaying = !displaying
           var zone = window.moment().utcOffset()
           var time = window.moment.utc(this.created_at).utcOffset(zone)
           var formatted = "Hello " + display + " It's " + time.format('HH:mm:ss MMM Do') + " now"

@@ -1,8 +1,12 @@
 body {
-  background-image: url("/images/dog.gif");
-  background-size: cover;
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Montserrat", serif;
+}
+
+#app {
+  background-image: url("/images/dog.gif");
+  height:1000px;
+  font-size:2rem;
 }
 
 a {
