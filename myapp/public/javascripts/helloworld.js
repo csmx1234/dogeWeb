@@ -1,3 +1,5 @@
+let _test_ = false;
+
 function hello() {
   alert("\u8001\u5A46\u5A46\u662F\u5446B");
 }
@@ -16,8 +18,25 @@ var data = {
   hideBtnName: "hide it",
   kappa: "笨蛋",
   title: "Jack",
-  showing: true
+  showing: true,
+  typing: false
 };
+
+var msgData = {
+  messages: [
+  ],
+  id: 1,
+  newMsg: ""
+};
+
+if ( _test_ ) {
+  for ( ; msgData.id < 50; msgData.id++ ) {
+    msgData.messages.push({
+      id: msgData.id,
+      msg: "hello"
+    })
+  }
+}
 
 async function start(){
   while (true) {
@@ -45,14 +64,24 @@ var vm = new Vue({
 	  hideMsg: function() {
       this.seen = !this.seen
       this.hideBtnName = this.seen ? "hide it" : "show it"
+    },
+    reset: _.debounce(
+      function() {
+        this.typing = false
+      },
+      500
+    )
+  },
+  watch: {
+    title: function( newName, oldName ) {
+      this.typing = true
+      this.reset()
     }
   },
   components: {
     messages: {
       data: function() {
-        return {
-          displaying: true
-        }
+        return data
       },
       props: ['now'],
       template: '<p>{{ timestamp }}</p>',
@@ -68,6 +97,21 @@ var vm = new Vue({
           return formatted;
         }
       }
+    }
+  }
+})
+
+var msgs = new Vue({
+  el: '#chatRoom',
+  data: msgData,
+  methods: {
+    addNewMsg: function() {
+      this.messages.push({
+        id: this.id++,
+        msg: this.newMsg
+      })
+
+      this.newMsg = ''
     }
   }
 })

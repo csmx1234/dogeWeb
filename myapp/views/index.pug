@@ -4,26 +4,15 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet")
-    style.
-      body, html {
-        height: 100%;
-      }
-      .parallax {
-        font-size: 5rem;
-        background-image: url("/images/dog.gif");
-        height: 100%;
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
       
   body
     script(src="https://unpkg.com/vue")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.js")
+    script(src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js")
     
-    div#app
-      h1 
+  
+    div#app(class='app')
+      .header 
         messages(v-for="message in messages" v-bind:now="now")
       p 
         span(v-if="showing") 哈喽
@@ -31,12 +20,41 @@ html
         br
         button(v-on:click="changeMsg") click me
         button(v-on:click="hideMsg") {{ hideBtnName }}
-      p Welcome to {{ title }}'s Website
+      p
+        | Welcome to {{ title }}'s Website
         br
         input(v-model="title")
+        br
+        h2
+          span(v-if="typing")   Typing...
       
-    .parallax
-      h1
-        |HelloWorld!!
+      br
       
+      .fullscreen-bg
+        video(loop muted autoplay class="fullscreen-bg__video")
+          source(src="/images/dog.webm" type="video/webm")
+      
+    .parallax_long_tail
+      .imgHeader
+        | Long Tail
+    
+    div#chatRoom(class='chatRoom')
+      .imgHeader
+        | Chat room
+      .msgList
+        ul
+          template(v-for='n in messages')
+            li
+              | {{n.id}} {{n.msg}}
+  
+      input(class='chatBar' v-model="newMsg" v-on:keyup.enter="addNewMsg" placeholder="请输入")
+      
+      .fullscreen-bg
+        video(loop muted autoplay class="fullscreen-bg__video")
+          source(src="/images/old_dog.webm" type="video/webm")
+    
+    .parallax_dali
+      .imgHeader
+        | le Grand Masturbateur
+    
     script(src='/javascripts/helloworld.js')
