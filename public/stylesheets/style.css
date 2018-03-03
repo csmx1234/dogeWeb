@@ -69,13 +69,15 @@ h2 {
   height: 1000px;
   padding: 10px 50px;
   background-image: url(/images/dog.gif);
-  background-size: cover; }
+  background-size: cover;
+  background-position: center; }
 
 .chatRoom {
   position: relative;
   height: 1000px;
   background-image: url(/images/old_dog.gif);
-  background-size: cover; }
+  background-size: cover;
+  background-position: center; }
 
 .msgList {
   position: absolute;
