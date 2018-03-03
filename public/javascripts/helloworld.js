@@ -1,4 +1,4 @@
-let _test_ = false;
+let _test_ = true;
 
 function hello() {
   alert("\u8001\u5A46\u5A46\u662F\u5446B");
