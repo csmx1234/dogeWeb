@@ -2,6 +2,7 @@
 
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var browserSync = require('browser-sync').create();
 
 gulp.task('scss', function () {
 	return gulp.src('./public/scss/*.scss')
@@ -9,6 +10,12 @@ gulp.task('scss', function () {
 	.pipe(gulp.dest('./public/stylesheets'));
 });
 
-gulp.task('scss:watch', function () {
+gulp.task('watch', function () {
+	browserSync.init({
+		server: {
+			baseDir: "./"
+		}
+	});
 	gulp.watch('./public/scss/*.scss', ['scss']);
+	gulp.watch("./views/*.pug").on("change", browserSync.reload);
 });
