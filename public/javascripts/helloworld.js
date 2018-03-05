@@ -1,5 +1,9 @@
 let _test_ = true;
 
+/*=============================================>>>>>
+= base functions =
+===============================================>>>>>*/
+
 function hello() {
   alert("\u8001\u5A46\u5A46\u662F\u5446B");
 }
@@ -7,6 +11,15 @@ function hello() {
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+/*= End of base functions =*/
+/*=============================================<<<<<*/
+
+
+
+/*=============================================>>>>>
+= data =
+===============================================>>>>>*/
 
 var data = {
   messages: [{
@@ -29,6 +42,15 @@ var msgData = {
   newMsg: ""
 };
 
+/*= End of data =*/
+/*=============================================<<<<<*/
+
+
+
+/*=============================================>>>>>
+= testing enviorment =
+===============================================>>>>>*/
+
 if ( _test_ ) {
   for ( ; msgData.id < 50; msgData.id++ ) {
     msgData.messages.push({
@@ -38,8 +60,19 @@ if ( _test_ ) {
   }
 }
 
+/*= End of testing enviorment =*/
+/*=============================================<<<<<*/
+
+
+
+/*=============================================>>>>>
+= function that change the variable periodically =
+===============================================>>>>>*/
+
 async function start(){
   while (true) {
+    data.now = Date.now();
+    data.displaying = !data.displaying;
     data.showing = !data.showing;
     await sleep(1000);
   }
@@ -47,16 +80,18 @@ async function start(){
 
 start();
 
+/*= End of function that change the variable periodically =*/
+/*=============================================<<<<<*/
+
+
+
+/*=============================================>>>>>
+= vue components =
+===============================================>>>>>*/
+
 var vm = new Vue({
   el: '#app',
   data: data,
-  mounted: function() {
-    var self = this;
-    setInterval(function() {
-      self.$data.now = Date.now()
-      self.$data.displaying = !self.$data.displaying
-    }, 1000)
-  },
   methods: {
     changeMsg: function() {
       this.kappa = (this.kappa == '笨蛋' ? 'lalala' : '笨蛋')
@@ -88,9 +123,7 @@ var vm = new Vue({
       computed: {
         timestamp: function() {
           this.now
-          var displaying = this.$data.displaying
-          var display = displaying ? "Siming" : "Jack"
-          this.$data.displaying = !displaying
+          var display = this.displaying ? "Siming" : "Jack"
           var zone = window.moment().utcOffset()
           var time = window.moment.utc(this.created_at).utcOffset(zone)
           var formatted = "Hello " + display + " It's " + time.format('HH:mm:ss MMM Do') + " now"
@@ -115,3 +148,6 @@ var msgs = new Vue({
     }
   }
 })
+
+/*= End of vue components =*/
+/*=============================================<<<<<*/

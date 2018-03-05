@@ -34,4 +34,5 @@ gulp.task('watch', ['nodemon'], function () {
 	gulp.watch('./public/scss/*.scss', ['scss']);
 	gulp.watch("./views/*.pug").on("change", browserSync.reload);
 	gulp.watch("./public/**/*.*").on("change", browserSync.reload);
+	gulp.watch("./routes/*.*").on("change", browserSync.reload);
 });

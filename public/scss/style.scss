@@ -13,8 +13,19 @@ body {
              0px 18px 23px rgba(0,0,0,0.1);
 }
 
+h1 {
+
+}
+
+h2 {
+  font-size:1rem;
+}
 p {
   margin: 20px 0px;
+}
+
+a {
+  color: #ccc;
 }
 
 li {
@@ -29,10 +40,6 @@ li {
 .imgHeader {
   font-size: 7rem;
   padding: 30px 50px;
-}
-
-h2 {
-  font-size:1rem;
 }
 
 @media (min-device-width: 300px) {
@@ -83,18 +90,35 @@ h2 {
   height: 100%;
 }
 
+/*=============================================>>>>>
+= app =
+===============================================>>>>>*/
+
 .app {
   height:1000px;
   padding: 10px 50px;
-  background-image: url(/images/dog.gif);
+  background-image: url('/images/dog.gif');
   background-size: cover;
   background-position: center;
 }
 
+.loginBtn {
+  height: 4rem;
+}
+
+/*= End of app =*/
+/*=============================================<<<<<*/
+
+
+
+/*=============================================>>>>>
+= chatRoom =
+===============================================>>>>>*/
+
 .chatRoom {
   position: relative;
   height:1000px;
-  background-image: url(/images/old_dog.gif);
+  background-image: url('/images/old_dog.gif');
   background-size: cover;
   background-position: center;
 }
@@ -118,3 +142,25 @@ h2 {
   box-sizing: border-box;
   font-size: 2rem;
 }
+
+/*= End of chatRoom =*/
+/*=============================================<<<<<*/
+
+
+
+/*=============================================>>>>>
+= login =
+===============================================>>>>>*/
+
+.login {
+  margin: 10rem 4rem;
+  box-sizing: border-box;
+}
+
+.loginTxt {
+  font-size: 7rem;
+  text-align: center;
+}
+
+/*= End of login =*/
+/*=============================================<<<<<*/
