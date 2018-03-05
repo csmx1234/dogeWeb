@@ -32,7 +32,8 @@ var data = {
   kappa: "笨蛋",
   title: "Jack",
   showing: true,
-  typing: false
+  typing: false,
+  customFont: false
 };
 
 var msgData = {
@@ -99,6 +100,9 @@ var vm = new Vue({
 	  hideMsg: function() {
       this.seen = !this.seen
       this.hideBtnName = this.seen ? "hide it" : "show it"
+    },
+    changeFont: function() {
+      this.customFont = !this.customFont
     },
     reset: _.debounce(
       function() {

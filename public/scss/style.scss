@@ -90,6 +90,9 @@ li {
   height: 100%;
 }
 
+.button {
+  height: 4rem;
+}
 /*=============================================>>>>>
 = app =
 ===============================================>>>>>*/
@@ -102,8 +105,8 @@ li {
   background-position: center;
 }
 
-.loginBtn {
-  height: 4rem;
+.appNewFont {
+  font: 14px "Mina", red, serif;
 }
 
 /*= End of app =*/
