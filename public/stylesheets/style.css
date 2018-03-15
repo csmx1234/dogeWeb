@@ -75,7 +75,7 @@ li {
 = app =
 ===============================================>>>>>*/
 .app {
-  height: 1000px;
+  height: 100%;
   padding: 10px 50px;
   background-image: url("/images/dog.gif");
   background-size: cover;
@@ -91,7 +91,7 @@ li {
 ===============================================>>>>>*/
 .chatRoom {
   position: relative;
-  height: 1000px;
+  height: 100%;
   background-image: url("/images/old_dog.gif");
   background-size: cover;
   background-position: center; }
@@ -99,10 +99,10 @@ li {
 .msgList {
   position: absolute;
   top: 10rem;
+  bottom: 3rem;
   overflow: scroll;
   font-size: 1rem;
   text-shadow: none;
-  height: 75%;
   width: 100%;
   box-sizing: border-box; }
 
